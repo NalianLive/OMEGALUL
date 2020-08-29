@@ -1,0 +1,7 @@
+name: OmegaLUL
+version: ${project.version}
+main: live.nalian.omegalul.OmegaLul
+api-version: 1.16
+authors: [violetwtf, LewisTehMinerz]
+description: You've seen Fundy's challenges. Now we're making our own.
+website: https://nalian.live
