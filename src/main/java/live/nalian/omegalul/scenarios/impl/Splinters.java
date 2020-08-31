@@ -44,7 +44,6 @@ public class Splinters extends SimpleScenario implements ISplinters
         }
         materialsToCheck.add(Material.STICK);
         materialsToCheck.add(Material.CARROT_ON_A_STICK);
-        materialsToCheck.add(Material.WARPED_FUNGUS_ON_A_STICK);
 
         materialsToCheck.remove(Material.WARPED_FUNGUS);
         materialsToCheck.remove(Material.CRIMSON_FUNGUS);
@@ -55,34 +54,7 @@ public class Splinters extends SimpleScenario implements ISplinters
             final Collection<? extends Player> players = lul.getServer().getOnlinePlayers();
             for (Player p: players)
             {
-                double splinterChance = 0;
-                final Inventory inv = p.getInventory();
-                for (Material m: materialsToCheck)
-                {
-                    if (inv.contains(m))
-                    {
-                        for (int i = 0; i < inv.getSize(); i++)
-                        {
-                            final ItemStack is = inv.getItem(i);
-                            if (is != null && is.getType() == m)
-                            {
-                                splinterChance += (0.1 * is.getAmount());
-                            }
-                        }
-                    }
-                }
-
-                if (random.nextInt(100) < splinterChance)
-                {
-                    // 2 = one heart total
-                    p.damage(2);
-                    p.sendMessage(
-                            ChatColor.RED
-                                + "You just got a splinter!"
-                                + ChatColor.ITALIC
-                                + " *ouch*"
-                    );
-                }
+                handler(p);
             }
         }, 0, 20);
 
@@ -98,6 +70,33 @@ public class Splinters extends SimpleScenario implements ISplinters
     @Override
     public void handler(final Player victim)
     {
+        double splinterChance = 0;
+        final Inventory inv = victim.getInventory();
+        for (Material m: materialsToCheck)
+        {
+            if (inv.contains(m))
+            {
+                for (int i = 0; i < inv.getSize(); i++)
+                {
+                    final ItemStack is = inv.getItem(i);
+                    if (is != null && is.getType() == m)
+                    {
+                        splinterChance += (0.1 * is.getAmount());
+                    }
+                }
+            }
+        }
 
+        if (random.nextInt(100) < splinterChance)
+        {
+            // 2 = one heart total
+            victim.damage(2);
+            victim.sendMessage(
+                    ChatColor.RED
+                            + "You just got a splinter!"
+                            + ChatColor.ITALIC
+                            + " *ouch*"
+            );
+        }
     }
 }
