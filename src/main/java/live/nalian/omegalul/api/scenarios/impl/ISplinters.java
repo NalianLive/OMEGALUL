@@ -1,8 +1,9 @@
 package live.nalian.omegalul.api.scenarios.impl;
 
+import live.nalian.omegalul.api.scenarios.IScenario;
 import org.bukkit.entity.Player;
 
-public interface ISplinters
+public interface ISplinters extends IScenario
 {
 
     /**
