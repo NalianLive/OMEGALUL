@@ -10,6 +10,7 @@ public final class OmegaLul extends JavaPlugin implements IOmegaLul
     @Override
     public void onEnable()
     {
+        new AustralianCrafting().register(this);
         new CraftDestroyer().register(this);
         new FastBabyZombies().register(this);
         new MobPoison().register(this);
