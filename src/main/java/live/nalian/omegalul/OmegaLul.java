@@ -13,6 +13,7 @@ public final class OmegaLul extends JavaPlugin implements IOmegaLul
         new AustralianCrafting().register(this);
         new CraftDestroyer().register(this);
         new FastBabyZombies().register(this);
+        new HotFood().register(this);
         new MobPoison().register(this);
         new MobsLikeSummer().register(this);
         new Splinters().register(this);
